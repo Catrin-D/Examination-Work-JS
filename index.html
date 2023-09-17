@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examination_Work</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+   <!--  Помидорка -->
+
+    <section id="pomodoroCircleTimer">
+
+        <!-- левая панель с картинкой -->
+        <div class="leftPanel">
+            <img class="pomodorGif" src="assets/start_pomodoro1.png" alt="tomato">
+        </div>
+
+        <!-- основная цетральная панель -->
+        <div class="mainField" >
+
+            <!-- модальное окно с настройками -->
+            <div class="openModalButtonContainer">
+                <button class="openModalButton">Настройки</button>
+            </div>
+
+            <!-- всплывающее окно -->
+             <div class="modalContainer">
+                <div class="modalWindow closeModalWindow">
+                    <div class="textModalWindow">
+                        <h4>Введите параметры "помидорок":</h4>                         
+                        <form class="pomodoroParametrs">
+                            <div class="labels">
+                                <label for="work">"Помидор", мин.</label> 
+                                <label for="pause">Пауза, мин.</label>
+                                <label for="chill">Большой перерыв. мин.</label>
+                                <label for="round">"Помидорный" раунд, шт.</label>
+                                <label for="total">Число "Помидорок" в день</label>
+                                <label for="sound">Со звуком</label>
+                            </div>
+                            <div class="inputs">
+                                <input type="number" name="work" id="work" min="1" max="120" value="25" >  
+                                <input type="number" name="pause" id="pause" min="1" max="60" value="5" >
+                                <input type="number" name="chill" id="chill" min="1" max="60" value="20" >  
+                                <input type="number" name="round" id="round" min="2" max="12" value="4" >  
+                                <input type="number" name="total" id="total" min="2" max="20" value="12" >  
+                                <input type="checkbox" name="sound" id="sound" checked > 
+                            </div>
+                        </form>
+                        <p class="attention"> Внимание! Если данные не будут изменены, 
+                            "Помидорка" получит стандартные параметры!</p>
+                    </div>
+                    <button class="closeModalButton">Сохранить настройки</button>
+                </div>
+            </div>
+
+            <!-- Имя очередной помидорки -->
+            <div class="pomodoroNameContainer">
+                <label for="pomodoroName" class="pomodoroNameClass">
+                    <input type="text" id="pomodoroName" name="pomodoroName" 
+                        minlength="3" maxlength="20" 
+                        placeholder="Название Pomodoro" >
+                   </label>
+                <button id="pomodoroNameButton" disabled> ОK </button>
+            </div>
+
+            <!-- таймер помидорка -->
+            <div class="containerTimer"> 
+                <p class="textTimer">Работа</p>
+                <div class="circularProgress">
+                    <p class="progressValue">0%</p>
+                </div>
+            </div> 
+
+            <!-- таймер цифровой -->
+            <div id="pomodoroTimer">00 : 00</div>
+
+            <!-- блок кнопок управления таймером -->
+            <div class="pomodoroButtons">
+                <button id="pomodoroButtonGo">СТАРТ</button>
+                <button id="pomodoroButtonStart" >Снова</button>
+                <button id="pomodoroButtonStop" >Стоп</button>
+                <button id="pomodoroButtonFinish">Финиш</button>
+            </div>
+
+
+            <!-- модальное окно с информацией о помидорке -->
+            <div class="openModalButtonContainerInfo">
+                <button class="openModalButtonInfo">О таймере Pomodoro</button>
+            </div>
+
+            <!-- всплывающее окно -->
+            <div class="modalContainerInfo">
+                <div class="modalWindowInfo closeModalWindow">
+                    <div class="textModalWindowInfo">
+                        <h4>Об идее метода Pomodoro:</h4>                         
+                        
+                        <p class="pomodoroInfo">
+                            <b>Идея</b>  ― работать интервалами по 25-45 минут работы, и делать 
+                            перерывы по 5-15 минут. Во время перерывов нужно отвлечься и дать себе отдых, 
+                            чтобы приступить к следующей задаче. Такой подход подойдет для работы 
+                            за компьютером - дайте спине, голове и глазам отдохнуть и вы будете 
+                            чувствовать себя значительно лучше.
+                            <br><br>
+                            <b>Правила:</b>
+                            Правило №1 ― настроить интервалы под себя;<br>
+                            Правило №2 ― выбрать задачу и сконцентрироваться на ней;<br>
+                            Правило №3 ― работать, ни на что не отвлекаясь, до сигнала таймера;<br>
+                            Правило №4 ― не суетиться и не гнаться за временем;<br>
+                            Правило №5 ― после каждого 4-го помидора делайте длинный перерыв;<br>
+                            <br>
+                            <b>История</b>  - итальянский студент Франческо Чирилло сильно уставал, 
+                            т.к. он много учился. Много времени тратилось незаметно, нужно было искать 
+                            подход для экономии времени. Франческо решил замерять затраченное время, 
+                            а под рукой оказался таймер в виде помидора. Вот так появился метод 
+                            Pomodoro ― планирования времени для продуктивной работы.
+
+                        </p>
+                    </div>
+                    <button class="closeModalButtonInfo">ОК</button>
+                </div>
+            </div>
+
+
+            <!-- модальное окно с выводом результатов -->
+
+            <div class="modalContainerResume">
+                <div class="modalWindowResume closeModalWindow">
+                    <div class="textModalWindowResume">
+                        <h4>Результаты работы "помидорок"</h4>                         
+                        
+                        <h5 class="resumeInfo"> </h5>
+                        <br>
+                        <ul class="resumelist"></ul>
+                    </div>
+                    <button class="closeModalButtonResume">ОК</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- правая панель с картинкой -->
+        <div class="rightPanel">
+            <img class="pomodorGif" src="assets/start_pomodoro1.png" alt="tomato">
+        </div>
+
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
